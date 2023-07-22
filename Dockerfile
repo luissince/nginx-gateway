@@ -8,11 +8,6 @@ RUN mkdir api_conf.d
 
 COPY conf/api_conf.d/api_servicios.conf /etc/nginx/api_conf.d/api_servicios.conf
 
-#EXPOSE 80
-
-#COPY certs/bookstore.io.crt /etc/ssl/certs/bookstore.io.crt
-#COPY certs/bookstore.io.key /etc/ssl/certs/bookstore.io.key
-
 RUN apt-get update
 
 RUN apt-get install nano -y
@@ -21,23 +16,13 @@ RUN apt-get install python3 -y
 
 RUN apt-get install python3-dev -y
 
-#RUN apt-get install py3-pip -y
-
-#RUN apt-get install build-base -y
-
-#RUN apt-get install libressl-dev -y 
-
-RUN apt-get install musl-dev -y
-
-RUN apt-get install libffi-dev -y
-
 RUN apt-get install python3-pip -y
 
-RUN pip3 install pip --upgrade
+RUN apt-get install build-essential -y
 
-RUN pip3 install certbot-nginx
+RUN apt install python3-certbot-nginx -y
 
-RUN mkdir /etc/letsencrypt
+RUN if [ ! -d "/etc/letsencrypt" ]; then mkdir /etc/letsencrypt; fi
 
 EXPOSE 80
 

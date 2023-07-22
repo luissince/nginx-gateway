@@ -1,0 +1,35 @@
+# Comentario: Este es un archivo de docker-compose.yml que define un servicio llamado "gateway" y una red llamada "luis".
+
+version: '3'
+
+# Comentario: Sección de servicios, define el contenedor y sus configuraciones.
+services:
+  nginx-gateway:
+    # Comentario: Se construye la imagen del contenedor utilizando un Dockerfile presente en el contexto actual.
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # Comentario: Se le asigna un nombre a la imagen del contenedor.
+    image: nginx-gateway-image
+
+    # Comentario: Se conecta el contenedor a la red "luis" utilizando la opción "networks".
+    networks:
+      - luis
+
+    # Comentario: Se mapean los puertos 80 y 443 del contenedor a los puertos 80 y 443 del host.
+    ports:
+      - 80:80
+      - 443:443
+
+    # Comentario: Se le asigna un nombre al contenedor, que será "nginx-gateway".
+    container_name: nginx-gateway
+
+    # Comentario: El contenedor se reiniciará automáticamente en caso de que falle o se detenga.
+    restart: always
+
+# Comentario: Sección de redes, define la red externa "luis" que se utilizará para conectar el contenedor.
+networks:
+  luis:
+    # Comentario: La red "luis" se declara como externa para que se conecte a una red creada fuera de este archivo de docker-compose.yml.
+    external: true
