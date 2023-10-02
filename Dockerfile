@@ -4,6 +4,10 @@ RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY conf/* /etc/nginx/
 
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY conf/templates/* /usr/share/nginx/html/
+
 RUN mkdir api_conf.d
 
 COPY conf/api_conf.d/api_servicios.conf /etc/nginx/api_conf.d/api_servicios.conf
