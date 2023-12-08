@@ -30,6 +30,8 @@ RUN if [ ! -d "/etc/letsencrypt" ]; then mkdir /etc/letsencrypt; fi
 
 EXPOSE 80
 
+EXPOSE 443
+
 COPY certbot.sh /.
 
 RUN chmod +x certbot.sh
