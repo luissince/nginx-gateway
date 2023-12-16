@@ -13,6 +13,9 @@ services:
     # Comentario: Se le asigna un nombre a la imagen del contenedor.
     image: nginx-gateway-image
 
+    # Comentario: El contenedor se reiniciará automáticamente en caso de que falle o se detenga.
+    restart: always
+
     # Comentario: Se conecta el contenedor a la red "luis" utilizando la opción "networks".
     networks:
       - luis
@@ -25,8 +28,9 @@ services:
     # Comentario: Se le asigna un nombre al contenedor, que será "nginx-gateway".
     container_name: nginx-gateway
 
-    # Comentario: El contenedor se reiniciará automáticamente en caso de que falle o se detenga.
-    restart: always
+    # Comentario: Se crea una referenfia al volumen
+    volumes:
+      - ./certs:/etc/letsencrypt
 
 # Comentario: Sección de redes, define la red externa "luis" que se utilizará para conectar el contenedor.
 networks:
