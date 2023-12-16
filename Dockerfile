@@ -15,12 +15,11 @@ COPY conf/templates/* /usr/share/nginx/html/
 
 # Instalar las dependencias de Python y otras herramientas
 RUN apk --no-cache add \
-    nano \
     python3 \
     python3-dev \
-    python3-pip \
-    build-essential \
-    python3-certbot-nginx \
+    py3-pip \
+    alpine-sdk \
+    certbot \
     && rm -rf /var/cache/apk/*
 
 # Crear el directorio de certificados si no existe
