@@ -1,4 +1,4 @@
-FROM nginx:1.25.3-alpine
+FROM nginx:1.25.3
 
 # Eliminar los archivos de configuración predeterminados de Nginx
 RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
