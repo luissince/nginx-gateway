@@ -18,13 +18,6 @@ docker image rm nginx-gateway-image
 docker build -t nginx-gateway-image .
 
 # Comentario: Ahora, se ejecuta el contenedor "api-gateway" con las siguientes configuraciones:
-# - Se ejecuta en segundo plano (modo detached) con la opción "-d".
-# - Se reinicia automáticamente en caso de fallos con la opción "--restart always".
-# - Se le asigna el nombre "api-gateway" con la opción "--name api-gateway".
-# - Se conecta a la red "upla" con la opción "--net=upla".
-# - Los puertos 80 y 443 del contenedor se mapean a los puertos 80 y 443 del host con las opciones "-p 80:80" y "-p 443:443".
-# - Se monta un volumen en la ruta "$(pwd)/certs" del host en el directorio "/etc/letsencrypt" del contenedor, lo que permite utilizar certificados SSL/TLS con la opción "-v $(pwd)/certs:/etc/letsencrypt".
-# - Finalmente, se utiliza la imagen "api-gateway" recién construida para iniciar el contenedor.
 docker run -d \
 --restart always \
 --name nginx-gateway \

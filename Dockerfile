@@ -1,39 +1,39 @@
-FROM nginx
+FROM nginx:1.21.3
 
+# Eliminar los archivos de configuración predeterminados de Nginx
 RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY conf/* /etc/nginx/
+# Copiar los archivos de configuración personalizados
+COPY conf/nginx.conf /etc/nginx/
+COPY conf/api_servicios.conf /etc/nginx/conf.d/
 
+# Eliminar el contenido predeterminado de /usr/share/nginx/html
 RUN rm -rf /usr/share/nginx/html/*
 
+# Copiar los archivos HTML personalizados
 COPY conf/templates/* /usr/share/nginx/html/
 
-RUN mkdir api_conf.d
+# Instalar las dependencias de Python y otras herramientas
+RUN apt-get update && apt-get install -y \
+    nano \
+    python3 \
+    python3-dev \
+    python3-pip \
+    build-essential \
+    python3-certbot-nginx
 
-COPY conf/api_conf.d/api_servicios.conf /etc/nginx/api_conf.d/api_servicios.conf
+# Crear el directorio de certificados si no existe
+RUN mkdir -p /etc/letsencrypt
 
-RUN apt-get update
-
-RUN apt-get install nano -y
-
-RUN apt-get install python3 -y
-
-RUN apt-get install python3-dev -y
-
-RUN apt-get install python3-pip -y
-
-RUN apt-get install build-essential -y
-
-RUN apt install python3-certbot-nginx -y
-
-RUN if [ ! -d "/etc/letsencrypt" ]; then mkdir /etc/letsencrypt; fi
-
+# Exponer los puertos 80 y 443
 EXPOSE 80
-
 EXPOSE 443
 
-COPY certbot.sh /.
+# Copiar el script de certbot
+COPY certbot.sh /
 
-RUN chmod +x certbot.sh
+# Dar permisos de ejecución al script de certbot
+RUN chmod +x /certbot.sh
 
+# Ejecutar el script de certbot al iniciar el contenedor
 CMD /certbot.sh
