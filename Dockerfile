@@ -1,5 +1,12 @@
 FROM nginx:alpine
 
+# Eliminar los archivos de configuración predeterminados de Nginx
+RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copiar los archivos de configuración personalizados
+COPY conf/*.conf /etc/nginx/
+COPY conf/services/api_servicios.conf /etc/nginx/conf.d/
+
 # Eliminar el contenido predeterminado de /usr/share/nginx/html
 RUN rm -rf /usr/share/nginx/html/*
 
@@ -7,7 +14,14 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY conf/templates/* /usr/share/nginx/html/
 
 # Instalar las dependencias de Python y otras herramientas
-RUN apk add --no-cache nano python3 python3-dev python3-pip build-essential python3-certbot-nginx
+RUN apk --no-cache add \
+    nano \
+    python3 \
+    python3-dev \
+    python3-pip \
+    build-essential \
+    python3-certbot-nginx \
+    && rm -rf /var/cache/apk/*
 
 # Crear el directorio de certificados si no existe
 RUN mkdir -p /etc/letsencrypt
