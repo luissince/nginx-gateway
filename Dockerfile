@@ -4,7 +4,7 @@ FROM nginx:1.21.3
 RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copiar los archivos de configuración personalizados
-COPY conf/nginx.conf /etc/nginx/
+COPY conf/*.conf /etc/nginx/
 COPY conf/services/api_servicios.conf /etc/nginx/conf.d/
 
 # Eliminar el contenido predeterminado de /usr/share/nginx/html
