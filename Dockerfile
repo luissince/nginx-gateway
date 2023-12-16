@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:1.21.3
 
 # Eliminar los archivos de configuración predeterminados de Nginx
 RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
@@ -14,13 +14,13 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY conf/templates/* /usr/share/nginx/html/
 
 # Instalar las dependencias de Python y otras herramientas
-RUN apk --no-cache add \
+RUN apt-get update && apt-get install -y \
+    nano \
     python3 \
     python3-dev \
-    py3-pip \
-    alpine-sdk \
-    certbot \
-    && rm -rf /var/cache/apk/*
+    python3-pip \
+    build-essential \
+    python3-certbot-nginx
 
 # Crear el directorio de certificados si no existe
 RUN mkdir -p /etc/letsencrypt
