@@ -1,6 +1,6 @@
 certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d mysql.syssoftintegra.com --redirect --no-eff-email
 
-certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d laluz.syssoftintegra.com --redirect --no-eff-email
+# certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d laluz.syssoftintegra.com --redirect --no-eff-email
 
 certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d tp.syssoftintegra.com --redirect --no-eff-email
 
@@ -12,13 +12,15 @@ certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos
 
 certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d legrand.tiquepos.com --redirect --no-eff-email
 
-certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d raices.syssoftintegra.com --redirect --no-eff-email
+# certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d raices.syssoftintegra.com --redirect --no-eff-email
 
 certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d felicitygirls.tiquepos.com --redirect --no-eff-email
 
 # certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d bodega-modelo.syssoftintegra.com --redirect --no-eff-email
 
 certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d unnagro.syssoftintegra.com --redirect --no-eff-email
+
+certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d syssoftintegra.com -d www.syssoftintegra.com --redirect --no-eff-email
 
 service nginx restart
 
