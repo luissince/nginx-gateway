@@ -24,6 +24,8 @@ certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos
 
 certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d inmobiliariagmyc.com -d www.inmobiliariagmyc.com --redirect --no-eff-email
 
+certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d sunat.inmobiliariagmyc.com --redirect --no-eff-email
+
 service nginx restart
 
 tail -f /var/log/nginx/access.log
