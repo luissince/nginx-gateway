@@ -22,7 +22,7 @@ certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos
 
 # certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d unnagro.syssoftintegra.com --redirect --no-eff-email
 
-# certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d syssoftintegra.com -d www.syssoftintegra.com --redirect --no-eff-email
+certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d syssoftintegra.com -d www.syssoftintegra.com --redirect --no-eff-email
 
 # certbot --nginx --keep-until-expiring -m alexander_dx_10@hotmail.com --agree-tos -d inmobiliariagmyc.com -d www.inmobiliariagmyc.com --redirect --no-eff-email
 
